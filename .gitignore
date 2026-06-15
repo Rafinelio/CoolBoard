@@ -1,5 +1,6 @@
 .DS_Store
 .metadata_never_index
+.vercel/
 .build/
 .swiftpm/
 DerivedData/
