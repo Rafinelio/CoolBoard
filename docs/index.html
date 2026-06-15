@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="CoolBoard is a minimal macOS cooling dashboard for Apple Silicon Macs.">
     <title>CoolBoard - Apple Silicon cooling control</title>
-    <link rel="stylesheet" href="./styles.css?v=why-download-20260615">
+    <link rel="stylesheet" href="./styles.css?v=operator-panel-20260615">
   </head>
   <body>
     <header class="site-header" aria-label="Primary">
@@ -43,37 +43,61 @@
         </figure>
       </section>
 
-      <section class="download-detail" aria-labelledby="why-title">
-        <div class="download-copy">
-          <p class="section-kicker">Why download</p>
-          <h2 id="why-title">See heat, fan RPM, and cooling state in one focused panel.</h2>
-          <p>
-            CoolBoard is built for Apple Silicon users running local AI, long builds, exports, or other sustained workloads. It makes sensor data readable, exposes detected fans, and keeps manual cooling simple enough to trust.
-          </p>
+      <section class="value-panel" aria-labelledby="why-title">
+        <div class="value-panel-head">
+          <p class="section-kicker">Why CoolBoard</p>
+          <span>01 / 04</span>
         </div>
 
-        <div class="download-flow" aria-label="Core reasons to download CoolBoard">
-          <div class="flow-node featured-node">
-            <span class="node-index">01</span>
-            <strong>Thermal board</strong>
-            <small>CPU, GPU, battery, AirPort, and power sensors in one view</small>
+        <div class="value-grid">
+          <div class="value-copy">
+            <h2 id="why-title">Cooling visibility for heavy Apple Silicon workloads.</h2>
+            <p>
+              Use CoolBoard when local AI, long builds, video exports, or desk setups push your Mac beyond what the default menu bar shows.
+            </p>
           </div>
-          <div class="flow-line" aria-hidden="true"></div>
-          <div class="flow-node">
-            <span class="node-index">02</span>
-            <strong>Fan control</strong>
-            <small>Auto mode or simple 0-100% presets for detected fans</small>
+
+          <aside class="workload-list" aria-label="When CoolBoard helps">
+            <h3>When it helps</h3>
+            <ul>
+              <li>Local AI</li>
+              <li>Long builds</li>
+              <li>Video export</li>
+              <li>Desk setup</li>
+            </ul>
+          </aside>
+
+          <div class="thermal-loop" aria-label="Live thermal loop">
+            <div class="loop-header">
+              <span>Live thermal loop</span>
+              <span>Auto-ready</span>
+            </div>
+            <div class="loop-track" aria-hidden="true">
+              <span>Sensors</span>
+              <span>Fan RPM</span>
+              <span>Auto</span>
+            </div>
+            <div class="loop-metrics">
+              <span><strong>CPU</strong>72 C</span>
+              <span><strong>GPU</strong>48 C</span>
+              <span><strong>Fans</strong>60%</span>
+            </div>
           </div>
-          <div class="flow-node">
-            <span class="node-index">03</span>
-            <strong>Fail-safe Auto</strong>
-            <small>Restores system cooling on quit, sleep, wake, and write errors</small>
-          </div>
-          <div class="flow-node">
-            <span class="node-index">04</span>
-            <strong>Local source</strong>
-            <small>MIT SwiftUI app with no cloud runtime or subscription layer</small>
-          </div>
+        </div>
+
+        <div class="value-reasons" aria-label="Core reasons to download CoolBoard">
+          <article>
+            <h3>Monitor sensors</h3>
+            <p>CPU, GPU, battery, AirPort, and power readings in one board.</p>
+          </article>
+          <article>
+            <h3>Set fans fast</h3>
+            <p>Use Auto or direct 0-100% presets for detected fans.</p>
+          </article>
+          <article>
+            <h3>Restore Auto</h3>
+            <p>CoolBoard restores system cooling on quit, sleep, wake, and errors.</p>
+          </article>
         </div>
       </section>
 
@@ -102,6 +126,6 @@
       <a href="https://github.com/Rafinelio/CoolBoard/issues/new/choose">Report compatibility</a>
     </footer>
 
-    <script src="./app.js?v=why-download-20260615"></script>
+    <script src="./app.js?v=operator-panel-20260615"></script>
   </body>
 </html>
