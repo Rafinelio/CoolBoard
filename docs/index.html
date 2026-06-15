@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="CoolBoard is a minimal macOS cooling dashboard for Apple Silicon Macs.">
     <title>CoolBoard - Apple Silicon cooling control</title>
-    <link rel="stylesheet" href="./styles.css?v=download-section-20260615">
+    <link rel="stylesheet" href="./styles.css?v=why-download-20260615">
   </head>
   <body>
     <header class="site-header" aria-label="Primary">
@@ -43,36 +43,36 @@
         </figure>
       </section>
 
-      <section class="download-detail" aria-labelledby="download-title">
+      <section class="download-detail" aria-labelledby="why-title">
         <div class="download-copy">
-          <p class="section-kicker">Download contents</p>
-          <h2 id="download-title">A macOS installer package, not a loose zip.</h2>
+          <p class="section-kicker">Why download</p>
+          <h2 id="why-title">See heat, fan RPM, and cooling state in one focused panel.</h2>
           <p>
-            The .pkg from GitHub Releases installs CoolBoard into Applications and sets up the local helper path used for fan writes after administrator approval.
+            CoolBoard is built for Apple Silicon users running local AI, long builds, exports, or other sustained workloads. It makes sensor data readable, exposes detected fans, and keeps manual cooling simple enough to trust.
           </p>
         </div>
 
-        <div class="download-flow" aria-label="What the package installs">
-          <div class="flow-node package-node">
+        <div class="download-flow" aria-label="Core reasons to download CoolBoard">
+          <div class="flow-node featured-node">
             <span class="node-index">01</span>
-            <strong>CoolBoard .pkg</strong>
-            <small>Apple Silicon installer</small>
+            <strong>Thermal board</strong>
+            <small>CPU, GPU, battery, AirPort, and power sensors in one view</small>
           </div>
           <div class="flow-line" aria-hidden="true"></div>
           <div class="flow-node">
             <span class="node-index">02</span>
-            <strong>CoolBoard.app</strong>
-            <small>SwiftUI monitor and control panel</small>
+            <strong>Fan control</strong>
+            <small>Auto mode or simple 0-100% presets for detected fans</small>
           </div>
           <div class="flow-node">
             <span class="node-index">03</span>
-            <strong>Local helper</strong>
-            <small>Fan mode and RPM writes, admin-gated</small>
+            <strong>Fail-safe Auto</strong>
+            <small>Restores system cooling on quit, sleep, wake, and write errors</small>
           </div>
           <div class="flow-node">
             <span class="node-index">04</span>
-            <strong>No cloud runtime</strong>
-            <small>No Python bootstrap or remote service</small>
+            <strong>Local source</strong>
+            <small>MIT SwiftUI app with no cloud runtime or subscription layer</small>
           </div>
         </div>
       </section>
@@ -102,6 +102,6 @@
       <a href="https://github.com/Rafinelio/CoolBoard/issues/new/choose">Report compatibility</a>
     </footer>
 
-    <script src="./app.js?v=download-section-20260615"></script>
+    <script src="./app.js?v=why-download-20260615"></script>
   </body>
 </html>
