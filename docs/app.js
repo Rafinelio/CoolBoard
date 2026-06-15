@@ -35,7 +35,7 @@ if (canvas instanceof HTMLCanvasElement && context && hero) {
   };
 
   const refreshBounds = () => {
-    const rect = canvas.getBoundingClientRect();
+    const rect = hero.getBoundingClientRect();
     bounds = {
       width: Math.max(1, rect.width),
       height: Math.max(1, rect.height),

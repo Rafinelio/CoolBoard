@@ -237,12 +237,11 @@ h1 {
   --pixel-size: 3px;
   --pixel-gap: 5px;
   position: absolute;
-  top: 72px;
-  right: -92px;
-  width: min(82vw, 1060px);
-  height: min(56vh, 520px);
+  inset: 0;
+  width: auto;
+  height: auto;
   display: block;
-  opacity: 0.82;
+  opacity: 0.74;
   pointer-events: none;
   z-index: 1;
   contain: strict;
@@ -345,11 +344,8 @@ h1 {
   .pixel-field {
     --pixel-size: 4px;
     --pixel-gap: 4px;
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: 214px;
-    order: 2;
+    width: auto;
+    height: auto;
   }
 
   .app-frame {
