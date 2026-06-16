@@ -16,6 +16,7 @@ if (canvas instanceof HTMLCanvasElement && context && hero) {
   let rows = 0;
   let animationFrame = 0;
   let previousPoint = null;
+  const maxActivePixels = 1800;
 
   const numericStyle = (name, fallback) => {
     const value = Number.parseFloat(getComputedStyle(canvas).getPropertyValue(name));
@@ -29,9 +30,9 @@ if (canvas instanceof HTMLCanvasElement && context && hero) {
 
   const baseAlpha = (column, row) => {
     const value = hash(column, row);
-    if (value > 0.992) return 0.12;
-    if (value > 0.955) return 0.055;
-    return 0.012;
+    if (value > 0.99) return 0.18;
+    if (value > 0.94) return 0.078;
+    return 0.014;
   };
 
   const refreshBounds = () => {
@@ -88,19 +89,23 @@ if (canvas instanceof HTMLCanvasElement && context && hero) {
     const key = `${column}:${row}`;
     const noise = hash(column + 19, row + 23);
     const existing = activePixels.get(key);
-    const nextStrength = Math.min(1, strength * (0.7 + noise * 0.42));
+    const nextStrength = Math.min(1, strength * (0.82 + noise * 0.46));
     const nextPixel = {
       column,
       row,
       startedAt: now,
-      delay: noise * 95,
-      hold: 620 + noise * 360,
+      delay: noise * 80,
+      hold: 820 + noise * 460,
       strength: nextStrength,
-      size: nextStrength > 0.82 ? pixelSize * 1.55 : pixelSize
+      size: nextStrength > 0.74 ? pixelSize * 1.85 : pixelSize * 1.18
     };
 
     if (!existing || existing.strength < nextStrength || now - existing.startedAt > 220) {
       activePixels.set(key, nextPixel);
+      if (activePixels.size > maxActivePixels) {
+        const oldestKey = activePixels.keys().next().value;
+        activePixels.delete(oldestKey);
+      }
     }
   };
 
@@ -121,23 +126,24 @@ if (canvas instanceof HTMLCanvasElement && context && hero) {
 
     const centerColumn = Math.round(x / stride);
     const centerRow = Math.round(y / stride);
-    const radius = window.innerWidth <= 560 ? 5 : 7;
+    const radius = window.innerWidth <= 560 ? 8 : 12;
 
     for (let row = centerRow - radius; row <= centerRow + radius; row += 1) {
       for (let column = centerColumn - radius; column <= centerColumn + radius; column += 1) {
         const dx = column - centerColumn;
         const dy = row - centerRow;
-        const distance = Math.hypot(dx * 0.92, dy * 1.08);
+        const distance = Math.hypot(dx * 0.78, dy * 1.14);
         const noise = hash(column * 3 + centerColumn, row * 5 + centerRow);
-        const irregularRadius = radius * (0.58 + noise * 0.42);
-        const isCore = distance <= 1.35;
-        const isBody = distance <= irregularRadius && noise > 0.26;
-        const isEdge = distance <= radius && noise > 0.76;
+        const ripple = Math.sin((dx * 0.72 + dy * 1.18) + noise * 4.4) * 0.5 + 0.5;
+        const irregularRadius = radius * (0.66 + noise * 0.34);
+        const isCore = distance <= 2.25;
+        const isBody = distance <= irregularRadius && noise > 0.18;
+        const isEdge = distance <= radius && noise > 0.64 && ripple > 0.18;
 
         if (!isCore && !isBody && !isEdge) continue;
 
         const falloff = Math.max(0, 1 - distance / Math.max(1, radius));
-        const strength = isCore ? 0.96 : Math.max(0.28, falloff * (0.64 + noise * 0.36));
+        const strength = isCore ? 1 : Math.max(0.38, falloff * (0.78 + noise * 0.34));
         setActivePixel(column, row, strength, now);
       }
     }
@@ -161,9 +167,9 @@ if (canvas instanceof HTMLCanvasElement && context && hero) {
           return;
         }
 
-        const rise = Math.min(1, age / 180);
-        const fade = Math.pow(1 - age / pixel.hold, 1.45);
-        const alpha = Math.min(0.92, pixel.strength * rise * fade);
+        const rise = Math.min(1, age / 120);
+        const fade = Math.pow(1 - age / pixel.hold, 1.18);
+        const alpha = Math.min(0.98, pixel.strength * rise * fade);
         if (alpha <= 0.01) return;
 
         context.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(3)})`;
